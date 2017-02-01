@@ -1,0 +1,26 @@
+<h1>Posts</h1>
+<p>
+     <a [routerLink]="['NewPost']" class="btn btn-primary">Add Post </a>
+</p>
+<div class="row">
+     <div class="col-md-6">
+
+           <spinner [visible]="isLoading"></spinner>
+             <!-- <pagination [items]="posts" (page-changed)="onPageChanged($event)"></pagination> -->
+     <ul class="list-group posts">
+          <li *ngFor="#post of posts" class="list-group-item" [class.active]="currentPost == post"  (click)="select(post)">
+                     <a>{{ post.title }}</a>
+                 </li>
+     </ul>
+</div>
+    <div class="col-md-6">
+        <div *ngIf="currentPost" class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ currentPost.title }}</h3>
+            </div>
+            <div class="panel-body">
+                <p>{{ currentPost.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>

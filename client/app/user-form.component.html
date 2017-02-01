@@ -1,0 +1,73 @@
+<h1>{{ title }}</h1>
+<div class="row">
+    <div class="col-md-6 well">
+        <form [ngFormModel]="form" (ngSubmit)="save()">
+           <fieldset>
+                <legend>
+                    User
+                </legend>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input  [(ngModel)]="user.name" #name="ngForm" ngControl="name" type="text" class="form-control">
+                   <div *ngIf="name.touched && !name.valid" class="alert alert-danger">
+                        Name is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input [(ngModel)]="user.email"
+                    #email="ngForm"
+                    ngControl="email"
+                    type="text" class="form-control">
+                    <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+                        Please type a valid email.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input [(ngModel)]="user.phone" #phone="ngForm" ngControl="phone" type="text" class="form-control">
+                    <div *ngIf="phone.touched && !phone.valid" class="alert alert-danger">
+                        Please type a phone.
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset ngControlGroup="address">
+                <legend>Address</legend>
+                <div >
+                    <div class="form-group">
+                        <label>Street</label>
+                        <input [(ngModel)]="user.address.street"  #street="ngForm" ngControl="street" type="text" class="form-control">
+                        <div *ngIf="street.touched && !street.valid" class="alert alert-danger">
+                           Enter Your street
+                       </div>
+                    </div>
+                    <div class="form-group">
+                        <label>State</label>
+                        <input [(ngModel)]="user.address.suite" #suite="ngForm" ngControl="suite" type="text" class="form-control">
+                        <div *ngIf="suite.touched && !suite.valid" class="alert alert-danger">
+                         Please type a state.
+                     </div>
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                       <input [(ngModel)]="user.address.city" #city="ngForm" ngControl="city" type="text" class="form-control">
+                       <div *ngIf="city.touched && !city.valid" class="alert alert-danger">
+                        Please type a state.
+                           </div>
+                    </div>
+                     <div class="form-group">
+                        <label>ZipCode</label>
+                        <input [(ngModel)]="user.address.zipcode" #zipcode="ngForm" ngControl="zipcode" type="text" class="form-control">
+                        <div *ngIf="zipcode.touched && !zipcode.valid" class="alert alert-danger">
+                        Please type a state.
+                         </div>
+                    </div>
+                </div>
+           </fieldset>
+           <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
+                Save
+            </button>
+        </form>
+    </div>
+</div>
